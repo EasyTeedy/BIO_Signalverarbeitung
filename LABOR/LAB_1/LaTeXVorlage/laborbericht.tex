@@ -70,6 +70,20 @@ T &= \frac{U_\mathrm{ADC}}{3{,}3\,\mathrm{V}}\,40\,^\circ\mathrm{C}.
 \section{Aufgabe 3: Achsen und Einheiten des Beschleunigungssensors}
 \label{sec:achsen}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{Images/Serial_print_x_y_z.png}
+    \includegraphics[width=0.40\textwidth]{Images/Serial_Port_receive_data_order.png}
+    \caption{Beschleunigungsdaten bei schneller vertikaler Handbewegung mit Standardeinstellung.}
+    \label{fig: ino Serial print Syntax code & Serial Port received data}
+\end{figure}
+
+Links könenn wir im dem Ino code erkennen das der erste Wert X Achse, der zweite Wert  Y-Achse und der dritte Wert representiert die Z-Achse.
+Rechts sehen wir die Daten aus dem Serial Port in eine .txt gespeichert die Spalte repräsentieren Nr des Eintrags, X Wert, Y Wert, Z Wert, Zeitstempel in millisekunden des Sensors
+Experimentelle erschlossen durch betrachten der eingelsenen werte über den Serial Port in der IDE und dem Bewegen und Neigen des Sensors.
+Die Ausgabe der Werte ist zudem in g "rdbeschleunigung"
+
+
 Ordnen Sie die drei vom Beschleunigungssensor ausgegebenen Beschleunigungswerte den auf dem Sensor markierten x-, y- und z-Achsen zu. Beschreiben Sie, wie sich diese Zuordnung experimentell testen l"asst, in welcher Einheit die Daten ausgegeben werden und wie sie mithilfe des Datenblatts in $\mathrm{m/s^2}$ umgerechnet werden. Nennen Sie Sensortyp, Datenblattseite, Messbereich und Umrechnungsfaktor.
 
 [Achsen, Test, Einheit und Umrechnung anhand des verwendeten Sensortyps dokumentieren.]
