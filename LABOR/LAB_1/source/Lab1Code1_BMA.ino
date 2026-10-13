@@ -5,6 +5,9 @@
    SDA to A4 and SCL to A5. Use the breakout's supported supply voltage.
 */
 
+
+brew reinstall --cask mactex-no-gui
+
 #include <Wire.h>
 #include "SparkFun_BMA400_Arduino_Library.h"
 
