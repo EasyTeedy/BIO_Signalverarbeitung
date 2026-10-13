@@ -46,7 +46,7 @@
 \section{Aufgabe 1: Darstellung des Messsystems}
 \label{sec:messsystem}
 
-Abbildung~\ref{fig:messsystem} zeigt das verwendete Messsystem. Beschriften Sie alle Komponenten, Signalpfade und Busse einschliesslich Bustyp und Geschwindigkeit. Beschreiben Sie jede Komponente in ein bis zwei S"atzen und kennzeichnen Sie eigene oder "ubernommene Darstellungen entsprechend.
+Stellen Sie das verwendete Messsystem in einer beschrifteten Darstellung dar. Kennzeichnen Sie jede Komponente, jeden Signalpfad und jeden Bus mit Bustyp und "Ubertragungsgeschwindigkeit. Beschreiben Sie jede Komponente in ein bis zwei S"atzen und kennzeichnen Sie eigene beziehungsweise "ubernommene Darstellungen.
 
 \begin{figure}[H]
 \centering
@@ -59,7 +59,7 @@ Abbildung~\ref{fig:messsystem} zeigt das verwendete Messsystem. Beschriften Sie 
 \section{Aufgabe 2: Umrechnung des Temperatursensors}
 \label{sec:temperatur}
 
-Der Sensor deckt $0$--$3{,}3\,\mathrm{V}$ beziehungsweise $0$--$40\,^\circ\mathrm{C}$ ab. Der 10-Bit-ADC verwendet einen Messbereich von $0$--$5\,\mathrm{V}$. Berechnen Sie aus dem ADC-Wert 520 zun"achst die Eingangsspannung und daraus die Temperatur. Dokumentieren Sie Rechenweg, verwendete ADC-Konvention und Ergebnis:
+Ein Temperatursensor bildet den Temperaturbereich $0$--$40\,^\circ\mathrm{C}$ auf den Spannungsbereich $0$--$3{,}3\,\mathrm{V}$ ab. Der Mikrocontroller misst Spannungen bis $5\,\mathrm{V}$ mit einem 10-Bit-ADC. Berechnen Sie f"ur den ausgegebenen ADC-Wert 520 die vom Sensor erfasste Temperatur und zeigen Sie den vollst"andigen Rechenweg. Geben Sie die verwendete ADC-Konvention an:
 \begin{align}
 U_\mathrm{ADC} &= \frac{\text{ADC-Wert}}{2^{10}-1}\,U_\mathrm{ref},\\
 T &= \frac{U_\mathrm{ADC}}{3{,}3\,\mathrm{V}}\,40\,^\circ\mathrm{C}.
@@ -70,7 +70,7 @@ T &= \frac{U_\mathrm{ADC}}{3{,}3\,\mathrm{V}}\,40\,^\circ\mathrm{C}.
 \section{Aufgabe 3: Achsen und Einheiten des Beschleunigungssensors}
 \label{sec:achsen}
 
-Ordnen Sie die drei ausgegebenen Beschleunigungswerte den Sensorachsen zu und beschreiben Sie einen Test zur Zuordnung. Geben Sie die Einheit der Rohdaten an und erl"autern Sie anhand des Sensordatenblatts die Umrechnung in $\mathrm{m/s^2}$. Nennen Sie Datenblatt, Seite, Messbereich und verwendeten Umrechnungsfaktor.
+Ordnen Sie die drei vom Beschleunigungssensor ausgegebenen Beschleunigungswerte den auf dem Sensor markierten x-, y- und z-Achsen zu. Beschreiben Sie, wie sich diese Zuordnung experimentell testen l"asst, in welcher Einheit die Daten ausgegeben werden und wie sie mithilfe des Datenblatts in $\mathrm{m/s^2}$ umgerechnet werden. Nennen Sie Sensortyp, Datenblattseite, Messbereich und Umrechnungsfaktor.
 
 [Achsen, Test, Einheit und Umrechnung anhand des verwendeten Sensortyps dokumentieren.]
 
@@ -78,7 +78,7 @@ Ordnen Sie die drei ausgegebenen Beschleunigungswerte den Sensorachsen zu und be
 \label{sec:handbewegung}
 
 \subsection{Messung und Plot (Aufgabe 4a)}
-Zeigen Sie vier Sekunden der zehn Sekunden langen Messung. Achsen und Einheiten m"ussen beschriftet sein; verweisen Sie im Text auf die Abbildung.
+Verwenden Sie den Arduino-Code \file{Lab1Code1}. Halten Sie den Beschleunigungssensor in der geschlossenen Hand und bewegen Sie ihn zehn Sekunden lang ohne Rotation schnell einmal pro Sekunde auf und ab. Speichern Sie die aufgezeichneten Daten f"ur die Verarbeitung in einer Textdatei. Plotten Sie vier Sekunden der Messung; beschriften Sie Achsen und Einheiten und verweisen Sie im Text auf die Abbildung.
 
 \begin{figure}[H]
 \centering
@@ -89,19 +89,19 @@ Zeigen Sie vier Sekunden der zehn Sekunden langen Messung. Achsen und Einheiten 
 \end{figure}
 
 \subsection{Plateaus der Peaks (Aufgabe 4b)}
-Diskutieren Sie, weshalb die Peaks Plateaus mit demselben Maximal- oder Minimalwert aufweisen und wie sich dieses Verhalten vermeiden l"asst.
+Diskutieren Sie, weshalb die Peaks Plateaus aufweisen und wiederholt denselben Maximal- beziehungsweise Minimalwert erreichen. Erl"autern Sie, wie dieses Verhalten zustande kommt und mit welcher "Anderung es sich vermeiden l"asst.
 
 [Beobachtung und Erkl"arung einf"ugen.]
 
 \subsection{Abweichung von der ausgef"uhrten Bewegung (Aufgabe 4c)}
-Erl"autern Sie, weshalb das gemessene Signal die ausgef"uhrte Bewegung nicht exakt abbildet.
+Erl"autern Sie, weshalb die aufgezeichneten Beschleunigungsdaten die tats"achlich ausgef"uhrten Handbewegungen nicht exakt abbilden.
 
 [Diskussion einf"ugen.]
 
 \section{Aufgabe 5: Messung mit angepasster Sensorkonfiguration}
 \label{sec:sensorkonfiguration}
 
-Dokumentieren Sie die "Anderung am Arduino-Code und die zugeh"orige Information aus dem Sensordatenblatt: Seite, Register, Parameter und alle zul"assigen Parameterwerte. Begr"unden Sie die gew"ahlte Einstellung. Zeigen Sie anschliessend den Plot einer wiederholten Messung "uber vier Sekunden und vergleichen Sie ihn mit Abbildung~\ref{fig:handbewegung-standard}.
+"Andern Sie den vorherigen Arduino-Code anhand des Sensordatenblatts so, dass die Aufzeichnungen die ausgef"uhrten Bewegungen besser abbilden. Dokumentieren Sie die Seite des Datenblatts, auf der das betreffende Register beschrieben wird, den Registerparameter, alle m"oglichen Werte dieses Parameters und die Begr"undung f"ur den gew"ahlten Wert. Wiederholen Sie das Experiment aus Aufgabe~4 mit derselben Bewegung und Dauer. Plotten Sie erneut vier Sekunden und vergleichen Sie den Plot mit Abbildung~\ref{fig:handbewegung-standard}; diskutieren Sie Gemeinsamkeiten, Unterschiede und deren Ursachen.
 
 \begin{figure}[H]
 \centering
@@ -116,7 +116,7 @@ Dokumentieren Sie die "Anderung am Arduino-Code und die zugeh"orige Information 
 \section{Aufgabe 6: Abtastfrequenz und Messung der sechs Sensorlagen}
 \label{sec:abtastung}
 
-Beschreiben Sie, wie jeder Messwert unmittelbar auf dem Mikrocontroller mit einem Zeitstempel versehen wurde. Geben Sie die Berechnung der mittleren Abtastfrequenz und ihrer Abweichung aus den Zeitstempeln an. Dokumentieren Sie die Messungen von jeweils zehn Sekunden f"ur die sechs Lagen (jede Achse nach oben und unten) und pr"ufen Sie, ob jeweils etwa $1\,g$ angezeigt wird.
+Erg"anzen Sie die Datenerfassung so, dass jeder Messwert unmittelbar auf dem Mikrocontroller einen eigenen Zeitstempel erh"alt (zum Beispiel mit einer Mikrosekunden- oder Millisekundenuhr). Verwenden Sie nicht die Zeitstempel der seriellen Konsole. Berechnen Sie aus den aufgezeichneten Zeitstempeln die mittlere Abtastfrequenz und deren Abweichung und erl"autern Sie die Berechnung. Messen Sie jeweils zehn Sekunden in sechs Sensorlagen: jede der drei Achsen zeigt einmal nach oben und einmal nach unten. Pr"ufen Sie, ob in jeder Lage eine Beschleunigung von etwa $1\,g$ angezeigt wird.
 
 \subsection{Plot der sechs Lagen (Aufgabe 6a)}
 \begin{figure}[H]
@@ -128,14 +128,14 @@ Beschreiben Sie, wie jeder Messwert unmittelbar auf dem Mikrocontroller mit eine
 \end{figure}
 
 \subsection{Plausibilit"at der Achsenwerte (Aufgabe 6b)}
-Diskutieren Sie, ob die gemessenen Werte bei nach oben beziehungsweise nach unten gerichteter Achse physikalisch plausibel sind. Ber"ucksichtigen Sie Vorzeichen, Lage und Erdbeschleunigung.
+Diskutieren Sie, ob die Messwerte sinnvoll sind, wenn eine Sensorachse nach oben beziehungsweise nach unten zeigt. Ber"ucksichtigen Sie insbesondere Achse, Vorzeichen, Orientierung und Erdbeschleunigung.
 
 [Beobachtungen und Plausibilit"atspr"ufung einf"ugen.]
 
 \section{Aufgabe 7: Wirkung des Filters}
 \label{sec:filter}
 
-Stellen Sie gefilterte und ungefilterte Daten aus dem vorherigen Experiment gemeinsam dar. Beschreiben Sie in ein bis zwei S"atzen die Filterwirkung und begr"unden Sie die Wahl des Filters.
+Stellen Sie gefilterte und ungefilterte Daten des vorherigen Experiments gemeinsam in einem Plot dar. Beschreiben Sie in ein bis zwei S"atzen, welche Wirkung der verwendete Filter hat und warum dieser Filter gew"ahlt wurde.
 
 \begin{figure}[H]
 \centering
@@ -150,24 +150,26 @@ Stellen Sie gefilterte und ungefilterte Daten aus dem vorherigen Experiment geme
 \section{Aufgabe 8: Bestimmung der Schrittfrequenz}
 \label{sec:schrittfrequenz}
 
-Bestimmen Sie aus den aufgezeichneten Daten die mittlere Schrittfrequenz und ihre Abweichung. Erl"autern Sie kurz die Erkennung der Schritte und die Berechnung.
+Bestimmen Sie aus den gesammelten Daten die Absatz- beziehungsweise Schrittfrequenz als Mittelwert und Abweichung. Stellen Sie das Ergebnis geeignet dar und erl"autern Sie kurz, wie einzelne Schritte erkannt und Frequenz sowie Abweichung berechnet werden.
 
 [Methode, Mittelwert, Abweichung und Ergebnis einf"ugen.]
 
 \section{Aufgabe 9: Vergleich mit dem mobilen Messsystem}
 \label{sec:mobil}
 
-Nehmen Sie mit Lab1Code2, DataLogger und Batterie etwa zehn Sekunden auf. Vergleichen Sie Mittelwert und Abweichung der Abtastfrequenz mit Abschnitt~\ref{sec:abtastung}. Erkl"aren Sie in einem Absatz die beobachteten Unterschiede.
+Verwenden Sie das mobile Messsystem mit DataLogger und Batterie sowie den Code \file{Lab1Code2}, um etwa zehn Sekunden Daten aufzuzeichnen (die Bewegung ist beliebig). Berechnen Sie Mittelwert und Abweichung der Abtastfrequenz und vergleichen Sie diese mit den Ergebnissen aus Abschnitt~\ref{sec:abtastung}. Erkl"aren Sie in einem Absatz, warum sich die Abtastfrequenzen unterscheiden.
 
 [Messbedingungen, Vergleichswerte und Erkl"arung einf"ugen.]
 
 \section{Aufgabe 10: Funktionspr"ufung des Python-Codes}
 \label{sec:zusammenfassung}
 
-Pr"ufen und dokumentieren Sie, dass \file{MainCode1.ipynb} mit den mitgelieferten Datens"atzen l"auft und die in den Aufgaben geforderten Plots erzeugt. Fassen Sie die wichtigsten Ergebnisse und Erkenntnisse anschliessend kurz zusammen.
+Stellen Sie sicher und dokumentieren Sie, dass der abgegebene Python-Code \file{MainCode1.ipynb} mit den mitgelieferten Datens"atzen ausgef"uhrt werden kann und die f"ur die Aufgaben geforderten Plots erzeugt. Fassen Sie die wichtigsten Ergebnisse und Erkenntnisse kurz zusammen.
 
 \section*{Hinweis zur Codeabgabe}
-Das ausf"uhrbare Hauptskript der Python-Auswertung ist separat als \file{MainCode1.ipynb} abzugeben. Legen Sie ausserdem den modifizierten Arduino-Code, alle zum Ausf"uhren ben"otigten Datens"atze und selbstgeschriebene Python-Bibliotheken in die geforderte ZIP-Datei. Der Bericht darf einschliesslich Abbildungen und Verzeichnissen h"ochstens zehn Seiten umfassen.
+Reichen Sie alle Abgabedateien gemeinsam in genau einer ZIP-Datei mit dem Namen \file{Lab1\_Gruppe\_Gruppennummer} ein. Die ZIP-Datei muss den Laborbericht als PDF (\file{Bericht\_1\_Gruppe\_Gruppennummer}), den modifizierten Arduino-Code \file{Lab1Code1}, das Python-Hauptskript \file{MainCode1.ipynb}, alle f"ur dessen Ausf"uhrung ben"otigten Datens"atze sowie gegebenenfalls selbstgeschriebene Python-Bibliotheken enthalten.
+
+Das Notebook bearbeitet die Python-Aufgaben 4(a), 5, 6(a), 7, 8, 9 und 10 und soll die geforderten Plots erzeugen. Der Bericht ist in LaTeX zu verfassen und darf einschliesslich Abbildungen und Verzeichnissen h"ochstens zehn Seiten umfassen; bei "Uberschreitung der Maximall"ange wird der Bericht nicht korrigiert und mit null Punkten bewertet.
 
 \bibliographystyle{IEEEtran}	
 \bibliography{Literatur}

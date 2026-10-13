@@ -23,7 +23,6 @@
 \usepackage[small]{caption}
 \usepackage{float}
 \usepackage{amsmath}
-\usepackage{units}
 \usepackage{subfigure}
 \usepackage{wallpaper}
 \usepackage{pst-all}
@@ -126,7 +125,7 @@
 \newcommand{\measure}{\psline[linewidth=0.5pt,arrowsize=4pt]}
 \newcommand{\xtick}[1]{\measure(#1,-0.1)(#1,0.1)}
 \newcommand{\ytick}[1]{\measure(-0.1,#1)(0.1,#1)}
-\newcommand{\ang}{\psarc[linewidth=0.5pt,arrowsize=4pt]{<->}}
+\renewcommand{\ang}{\psarc[linewidth=0.5pt,arrowsize=4pt]{<->}}
 \newcommand{\tf}[1]{\psframe[linewidth=2pt](-1,-0.75)(1,0.75)\rput(0,0){#1}}
 \newcommand{\tff}[2]{\psframe[fillstyle=solid,fillcolor=lightgray](-1,0)(1,0.75)\psframe[linewidth=2pt](-1,-0.75)(1,0.75)\rput(0,0.35){#1}\rput(0,-0.35){#2}}
 \newcommand{\sat}{\psframe[linewidth=2pt](-1,-0.75)(1,0.75)\link(-0.8,-0.5)(-0.5,-0.5)(0.5,0.5)(0.8,0.5)}
@@ -170,5 +169,3 @@
 \newcounter{enumcount}
 \newcommand{\resume}[1]{\begin{#1} \setcounter{enumi}{\value{enumcount}}}
 \newcommand{\pause}[1]{\setcounter{enumcount}{\value{enumi}} \end{#1}}
-
-
