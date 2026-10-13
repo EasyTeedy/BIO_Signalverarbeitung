@@ -49,6 +49,14 @@ void loop() {
     uint8_t zLsb = Wire.read();
     uint8_t zMsb = Wire.read();
 
+/*
+    Serial.print(String("X:") + readRawAxis(xLsb, xMsb));
+    Serial.print("\t");
+    Serial.print(String("Y:") + readRawAxis(yLsb, yMsb));
+    Serial.print("\t");
+    Serial.print(String("Z:") + readRawAxis(zLsb, zMsb));
+    Serial.print("\t");
+*/
     Serial.print(readRawAxis(xLsb, xMsb));
     Serial.print("\t");
     Serial.print(readRawAxis(yLsb, yMsb));
