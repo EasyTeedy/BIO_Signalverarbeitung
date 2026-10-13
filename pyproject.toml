@@ -1,12 +1,19 @@
 [project]
-name = "BIO_Signalverarbeitung"
+name = "BIO_Signalverarbeitung_A5"
 version = "0.1.0"
 description = "Default template for PDM package"
 authors = [
     {name = "Cedric Rissi", email = "cedric.rissi2003@gmail.com"},
+    {name = "milanbuerkle", email = "m.buerkle@mci4me.at"},
 ]
-dependencies = ["numpy>=2.5.4", "statistics>=1.0.3.5", "matplotlib>=3.11.2", "scipy>=1.18.1", "ipykernel>=7.4.0"]
-requires-python = "==3.13.*"
+dependencies = [
+    "numpy>=2.5.4",
+    "statistics>=1.0.3.5",
+    "matplotlib>=3.11.2",
+    "scipy>=1.18.1",
+    "ipykernel>=7.4.0",
+]
+requires-python = "==3.12.*"
 readme = "README.md"
 license = {text = "MIT"}
 
