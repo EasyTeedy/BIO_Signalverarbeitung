@@ -6,8 +6,6 @@
 */
 
 
-brew reinstall --cask mactex-no-gui
-
 #include <Wire.h>
 #include "SparkFun_BMA400_Arduino_Library.h"
 

@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Aufgabe 1: Darstellung des Messsystems}{3}{}%
+\contentsline {section}{\numberline {2}Aufgabe 2: Umrechnung des Temperatursensors}{3}{}%
+\contentsline {section}{\numberline {3}Aufgabe 3: Achsen und Einheiten des Beschleunigungssensors}{3}{}%
+\contentsline {section}{\numberline {4}Aufgabe 4: Vertikale Handbewegung mit Standardeinstellung}{4}{}%
+\contentsline {subsection}{\numberline {4.1}Messung und Plot (Aufgabe 4a)}{4}{}%
+\contentsline {subsection}{\numberline {4.2}Plateaus der Peaks (Aufgabe 4b)}{4}{}%
+\contentsline {subsection}{\numberline {4.3}Abweichung von der ausgef\grmn@active@dq@ uhrten Bewegung (Aufgabe 4c)}{4}{}%
+\contentsline {section}{\numberline {5}Aufgabe 5: Messung mit angepasster Sensorkonfiguration}{4}{}%
+\contentsline {section}{\numberline {6}Aufgabe 6: Abtastfrequenz und Messung der sechs Sensorlagen}{5}{}%
+\contentsline {subsection}{\numberline {6.1}Plot der sechs Lagen (Aufgabe 6a)}{5}{}%
+\contentsline {subsection}{\numberline {6.2}Plausibilit\grmn@active@dq@ at der Achsenwerte (Aufgabe 6b)}{5}{}%
+\contentsline {section}{\numberline {7}Aufgabe 7: Wirkung des Filters}{6}{}%
+\contentsline {section}{\numberline {8}Aufgabe 8: Bestimmung der Schrittfrequenz}{6}{}%
+\contentsline {section}{\numberline {9}Aufgabe 9: Vergleich mit dem mobilen Messsystem}{6}{}%
+\contentsline {section}{\numberline {10}Aufgabe 10: Funktionspr\grmn@active@dq@ ufung des Python-Codes}{6}{}%
