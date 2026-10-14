@@ -44,44 +44,77 @@
 \pagestyle{fancy}
 
 \section{Aufgabe 1: Darstellung des Messsystems}
-\label{sec:messsystem}
+\label{sec:blochscltbild_messsystem}
 
-Stellen Sie das verwendete Messsystem in einer beschrifteten Darstellung dar. Kennzeichnen Sie jede Komponente, jeden Signalpfad und jeden Bus mit Bustyp und "Ubertragungsgeschwindigkeit. Beschreiben Sie jede Komponente in ein bis zwei S"atzen und kennzeichnen Sie eigene beziehungsweise "ubernommene Darstellungen.
+\begin{quote}
+\small
+\textbf{Aufgabenstellung:} Erstellen Sie Diagramme, in denen das Messsystem dargestellt ist. Beschriften Sie jede Komponente, jeden Bus (einschließlich Bustyp und -geschwindigkeit) sowie jeden Signalpfad, und beschreiben Sie diese jeweils kurz (1–2 Sätze pro Komponente).
+\end{quote}
 
 \begin{figure}[H]
 \centering
-\fbox{\parbox[c][4cm][c]{0.85\textwidth}{\centering
-[Blockdiagramm des Messsystems hier einf"ugen]}}
-\caption{Messsystem mit Komponenten, Signalpfaden und beschrifteten Bussen.}
-\label{fig:messsystem}
+\includegraphics[width=1\textwidth]{Images/Blockschaltbild_Messaufbau.png}
+\caption{Messsystem mit Komponenten, Signalpfaden und beschrifteten Bussen (eigene Darstellung).}
+\label{fig:blochscltbild_messsystem}
 \end{figure}
 
-\section{Aufgabe 2: Umrechnung des Temperatursensors}
-\label{sec:temperatur}
+Das Messsystem gliedert sich in folgende Komponenten und Übertragungswege:
+\begin{itemize}
+    \item \textbf{PC (Auswerteeinheit):} Dient dem Flashen des Mikrocontrollers und dem Einlesen bzw. Speichern der Messdaten.
+    \item \textbf{UART / Serial COM Port (Signalpfad PC $\leftrightarrow$ Mikrocontroller):} Bidirektionale serielle Verbindung via USB / Micro-USB mit einer Baudrate von $57600\,\text{Bd}$.
+    \item \textbf{Mikrocontroller ($\mu\text{C}$ / Arduino Uno):} Liest die Sensordaten ein, verarbeitet sie und leitet sie an den PC weiter.
+    \item \textbf{I2C-Bus \& Steckverbindung (Signalpfad $\mu\text{C}$ $\leftrightarrow$ Sensor):} Vierpolige Steckverbindung bestehend aus den Leitungen $\text{Vin}/\text{Vcc}$, $\text{Gnd}$, $\text{SDA}$ und $\text{SCL}$. Die Abtastrate (Takt) des Sensors beträgt $800\,\text{Hz}$.
+    \item \textbf{Beschleunigungssensor (ACC BMA 400):} Erfasst die physikalischen Beschleunigungswerte und stellt diese über die I2C-Schnittstelle bereit.
+    \item \textbf{LOG (nicht aktiv):} Eine im Versuchsaufbau vorgesehene, aber aktuell nicht aktivierte (\textit{not enabled}) Protokollierungsstufe am Ausgang des Sensors.
+\end{itemize}
 
-Ein Temperatursensor bildet den Temperaturbereich $0$--$40\,^\circ\mathrm{C}$ auf den Spannungsbereich $0$--$3{,}3\,\mathrm{V}$ ab. Der Mikrocontroller misst Spannungen bis $5\,\mathrm{V}$ mit einem 10-Bit-ADC. Berechnen Sie f"ur den ausgegebenen ADC-Wert 520 die vom Sensor erfasste Temperatur und zeigen Sie den vollst"andigen Rechenweg. Geben Sie die verwendete ADC-Konvention an:
-\begin{align}
-U_\mathrm{ADC} &= \frac{\text{ADC-Wert}}{2^{10}-1}\,U_\mathrm{ref},\\
-T &= \frac{U_\mathrm{ADC}}{3{,}3\,\mathrm{V}}\,40\,^\circ\mathrm{C}.
-\end{align}
-\noindent
-[Rechnung und Ergebnis einf"ugen.]
+\section{Aufgabe 2: Umrechnung des Temperatursensors}
+
+\textbf{Aufgabenstellung:}
+Ein Temperatursensor misst Spannungen im Bereich von $0 - 3{,}3\,\text{V}$ für einen Temperaturbereich von $0 - 40\,^{\circ}\text{C}$. Der Mikrocontroller erfasst diese Spannung mit einer Auflösung von $10\,\text{Bit}$ bei einer Referenzspannung von $5\,\text{V}$. Gesucht ist die gemessene Temperatur, wenn der Mikrocontroller einen ADC-Rohwert von $520$ ausgibt.
+
+\subsection{Lösungsweg und Rechnung}
+
+\begin{enumerate}
+    \item \textbf{Berechnung der gemessenen Spannung $U$:}
+    Mit einer 10-Bit-Auflösung ($2^{10} = 1024$ Stufen) und einer Referenzspannung von $5\,\text{V}$ ergibt sich die Eingangsspannung aus dem ADC-Wert:
+    \begin{equation}
+        U = \left( \frac{\text{ADC-Wert}}{1024} \right) \times 5\,\text{V} = \left( \frac{520}{1024} \right) \times 5\,\text{V} \approx 2{,}539\,\text{V}
+    \end{equation}
+
+    \item \textbf{Umrechnung der Spannung in die Temperatur $T$:}
+    Der Sensor bildet den Temperaturbereich von $0 - 40\,^{\circ}\text{C}$ linear auf einen Spannungsbereich von $0 - 3{,}3\,\text{V}$ ab. Daraus resultiert die Empfindlichkeit bzw. der Umrechnungsfaktor:
+    \begin{equation}
+        \frac{40\,^{\circ}\text{C}}{3{,}3\,\text{V}} \approx 12{,}121\,^{\circ}\text{C/V}
+    \end{equation}
+    Multipliziert man die gemessene Spannung mit diesem Faktor, erhält man die gesuchte Temperatur:
+    \begin{equation}
+        T = U \times \frac{40\,^{\circ}\text{C}}{3{,}3\,\text{V}} = 2{,}539\,\text{V} \times 12{,}121\,^{\circ}\text{C/V} \approx 30{,}78\,^{\circ}\text{C}
+    \end{equation}
+\end{enumerate}
+
+\textbf{Ergebnis:} Bei einem ADC-Wert von $520$ misst der Sensor eine Temperatur von ca. \textbf{$30{,}78\,^{\circ}\text{C}$}.
 
 \section{Aufgabe 3: Achsen und Einheiten des Beschleunigungssensors}
 \label{sec:achsen}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.40\textwidth]{Images/Serial_print_x_y_z.png}
-    \includegraphics[width=0.40\textwidth]{Images/Serial_Port_receive_data_order.png}
+    \includegraphics[height=0.20\textwidth]{Images/Serial_print_x_y_z.png}
+    \includegraphics[height=0.20\textwidth]{Images/Serial_Port_receive_data_order.png}
     \caption{Beschleunigungsdaten bei schneller vertikaler Handbewegung mit Standardeinstellung.}
     \label{fig: ino Serial print Syntax code & Serial Port received data}
 \end{figure}
 
-Links könenn wir im dem Ino code erkennen das der erste Wert X Achse, der zweite Wert  Y-Achse und der dritte Wert representiert die Z-Achse.
-Rechts sehen wir die Daten aus dem Serial Port in eine .txt gespeichert die Spalte repräsentieren Nr des Eintrags, X Wert, Y Wert, Z Wert, Zeitstempel in millisekunden des Sensors
-Experimentelle erschlossen durch betrachten der eingelsenen werte über den Serial Port in der IDE und dem Bewegen und Neigen des Sensors.
-Die Ausgabe der Werte ist zudem in g "rdbeschleunigung"
+Links können wir in der Ino-Datei erkennen, dass der erste Wert die X-Achse, der zweite Wert die Y-Achse und der dritte Wert die Z-Achse repräsentiert. 
+Rechts sehen wir die Daten aus dem Serial Port in eine .txt gespeichert; die Spalten repräsentieren die Nummer des Eintrags, den X-Wert, den Y-Wert, den Z-Wert sowie den Zeitstempel des Sensors in Millisekunden. 
+Die Zuordnung wurde experimentell durch Betrachten der eingelesenen Werte über den Serial Port in der IDE und das gezielte Bewegen und Neigen des Sensors erschlossen. Die Werte werden in Einheiten der Erdbeschleunigung $g$ (also $\mathrm{m/s^2}$) ausgegeben.
+
+Die Umrechnung der Rohwerte in die physikalische Einheit $\mathrm{m/s^2}$ erfolgt über die 12-Bit-Auflösung des Sensors vom Typ \textbf{Bosch BMA400} (gemäß Datenblatt, S. 2). Bei dem verwendeten Messbereich von $\pm 2\,\text{g}$ ergibt sich ein Gesamtbereich von $4\,\text{g}$, der sich auf $2^{12} = 4096$ Stufen ($-2048$ bis $+2047$) verteilt. Daraus resultiert der Umrechnungsfaktor von $\frac{1}{1024}\,\text{g/LSB}$:
+
+\begin{equation}
+    a_{\text{m/s}^2} = \left( \frac{\text{Rohwert}}{1024} \right) \times 9.81\,\text{m/s}^2
+\end{equation}
 
 
 Ordnen Sie die drei vom Beschleunigungssensor ausgegebenen Beschleunigungswerte den auf dem Sensor markierten x-, y- und z-Achsen zu. Beschreiben Sie, wie sich diese Zuordnung experimentell testen l"asst, in welcher Einheit die Daten ausgegeben werden und wie sie mithilfe des Datenblatts in $\mathrm{m/s^2}$ umgerechnet werden. Nennen Sie Sensortyp, Datenblattseite, Messbereich und Umrechnungsfaktor.
