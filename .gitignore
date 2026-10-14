@@ -78,6 +78,15 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# LaTeX build artifacts
+LABOR/LAB_1/LaTeXVorlage/*.aux
+LABOR/LAB_1/LaTeXVorlage/*.bbl
+LABOR/LAB_1/LaTeXVorlage/*.blg
+LABOR/LAB_1/LaTeXVorlage/*.fdb_latexmk
+LABOR/LAB_1/LaTeXVorlage/*.fls
+LABOR/LAB_1/LaTeXVorlage/*.synctex.gz
+LABOR/LAB_1/LaTeXVorlage/*.toc
+
 # IPython
 profile_default/
 ipython_config.py
